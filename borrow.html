@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Borrow Book - MyLibrary</title>
+  <link rel="stylesheet" href="borrow.css" />
+</head>
+<body>
+    <div class="back-button">
+  <a href="index1.html">← Back to Home</a>
+</div>
+
+<div class="custom-cursor"></div>
+
+  <!-- Header -->
+  <header class="borrow-header">
+    <h1>📚 Borrow a Book</h1>
+    <p>Fill the form below to borrow your desired book</p>
+  </header>
+
+  <!-- Borrow Form Section -->
+  <section class="form-section">
+    <form id="borrowForm">
+      <input type="text" id="userName" placeholder="Your Name" required />
+      <input type="text" id="bookTitle" placeholder="Book Title" required />
+      <input type="text" id="bookAuthor" placeholder="Author Name" required />
+      <input type="date" id="borrowDate" required />
+      <button type="submit">Borrow Now</button>
+    </form>
+  </section>
+
+  <!-- Borrowed Books Section -->
+  <section class="borrowed-section" id="borrowedList">
+    <h2>📋 Borrowed Books</h2>
+    <!-- Borrowed book entries will appear here -->
+  </section>
+
+  <footer class="footer">
+    &copy; 2025 MyLibrary | Designed by YourName
+  </footer>
+
+  <script>
+    document.getElementById("borrowForm").addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const name = document.getElementById("userName").value;
+  const title = document.getElementById("bookTitle").value;
+  const author = document.getElementById("bookAuthor").value;
+  const date = document.getElementById("borrowDate").value;
+
+  const borrowedList = document.getElementById("borrowedList");
+
+  const entry = document.createElement("div");
+  entry.className = "borrowed-book";
+  entry.innerHTML = `
+    <p><strong>Name:</strong> ${name}</p>
+    <p><strong>Book Title:</strong> ${title}</p>
+    <p><strong>Author:</strong> ${author}</p>
+    <p><strong>Borrowed On:</strong> ${date}</p>
+  `;
+
+  borrowedList.appendChild(entry);
+
+  // Clear form
+  document.getElementById("borrowForm").reset();
+});
+  </script>
+
+  <script>
+  const cursor = document.querySelector('.custom-cursor');
+  window.addEventListener('mousemove', e => {
+    cursor.style.top = e.clientY + 'px';
+    cursor.style.left = e.clientX + 'px';
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Dashboard - MyLibrary</title>
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+    <div class="back-button">
+  <a href="index1.html">← Back to Home</a>
+</div>
+
+<div class="custom-cursor"></div>
+
+  <!-- Header -->
+  <header class="admin-header">
+    <h1>🛠️ Admin Dashboard</h1>
+    <p>Manage books, users, and activities in one place</p>
+  </header>
+
+  <!-- Dashboard Cards -->
+  <section class="admin-cards">
+    <div class="card manage-books">
+      <h2>📚 Manage Books</h2>
+      <button onclick="showForm('book')">Add Book</button>
+    </div>
+    <div class="card manage-users">
+      <h2>👥 Manage Users</h2>
+      <button onclick="showForm('user')">View Users</button>
+    </div>
+    <div class="card activity-log">
+      <h2>📋 Activity Log</h2>
+      <button onclick="showForm('log')">View Logs</button>
+    </div>
+  </section>
+
+  <!-- Dynamic Section -->
+  <section id="admin-section" class="admin-section">
+    <!-- Content added by JS -->
+  </section>
+
+  <footer class="footer">
+    &copy; 2025 MyLibrary | Admin Panel
+  </footer>
+
+  <script>
+    function showForm(type) {
+  const section = document.getElementById("admin-section");
+  section.innerHTML = ""; // clear existing
+
+  if (type === "book") {
+    section.innerHTML = `
+      <h2>Add New Book</h2>
+      <form id="bookForm">
+        <input type="text" placeholder="Book Title" required />
+        <input type="text" placeholder="Author" required />
+        <input type="text" placeholder="Genre" required />
+        <input type="number" placeholder="Copies Available" required />
+        <button type="submit">Add Book</button>
+      </form>
+    `;
+  } else if (type === "user") {
+    section.innerHTML = `
+      <h2>User List</h2>
+      <ul>
+        <li>📘 John Doe - 2 Books Borrowed</li>
+        <li>📙 Priya Sharma - 1 Book Borrowed</li>
+        <li>📗 Arun Kumar - 3 Books Borrowed</li>
+      </ul>
+    `;
+  } else if (type === "log") {
+    section.innerHTML = `
+      <h2>Recent Activities</h2>
+      <ul>
+        <li>🔹 John borrowed "Atomic Habits" on 2025-07-29</li>
+        <li>🔹 Priya returned "Rich Dad Poor Dad" on 2025-07-30</li>
+        <li>🔹 Admin added "The Alchemist" to catalog</li>
+      </ul>
+    `;
+  }
+}
+
+function showForm(type) {
+  const section = document.getElementById("admin-section");
+  section.innerHTML = ""; // clear existing
+
+  if (type === "book") {
+    section.innerHTML = `
+      <h2>📚 Manage Books</h2>
+      <button class="add-book-btn" onclick="openBookForm()">➕ Add New Book</button>
+      <table class="book-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Genre</th>
+            <th>Copies</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Atomic Habits</td>
+            <td>James Clear</td>
+            <td>Self-Help</td>
+            <td>4</td>
+            <td><button class="delete-btn">Delete</button></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>The Alchemist</td>
+            <td>Paulo Coelho</td>
+            <td>Fiction</td>
+            <td>3</td>
+            <td><button class="delete-btn">Delete</button></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Hidden Add Book Form Modal -->
+      <div class="modal" id="bookModal">
+        <div class="modal-content">
+          <span class="close" onclick="closeBookForm()">&times;</span>
+          <h3>Add New Book</h3>
+          <form id="bookForm">
+            <input type="text" placeholder="Book Title" required />
+            <input type="text" placeholder="Author" required />
+            <input type="text" placeholder="Genre" required />
+            <input type="number" placeholder="Copies" required />
+            <button type="submit">Add Book</button>
+          </form>
+        </div>
+      </div>
+    `;
+  }
+}
+
+function openBookForm() {
+  document.getElementById("bookModal").style.display = "block";
+}
+
+function closeBookForm() {
+  document.getElementById("bookModal").style.display = "none";
+}
+
+// Close modal on outside click
+window.onclick = function(event) {
+  const modal = document.getElementById("bookModal");
+  if (event.target === modal) {
+    modal.style.display = "none";
+  }
+};
+
+  </script>
+
+  <script>
+  const cursor = document.querySelector('.custom-cursor');
+  window.addEventListener('mousemove', e => {
+    cursor.style.top = e.clientY + 'px';
+    cursor.style.left = e.clientX + 'px';
+  });
+</script>
+
+</body>
+</html>

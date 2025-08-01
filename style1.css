@@ -1,0 +1,90 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body, html {
+  width: 100%;
+  height: 100%;
+  background: #0e0e0e;
+  color: white;
+}
+
+/* Intro Container */
+.intro-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: radial-gradient(circle, #1c1c1c, #000);
+  overflow: hidden;
+}
+
+.book-wrapper {
+  text-align: center;
+  animation: fadeOut 1s ease-out forwards;
+  animation-delay: 3.5s;
+}
+
+.rotating-book {
+  width: 180px;
+  height: auto;
+  animation: rotateBook 3.5s ease-in-out forwards;
+}
+
+.book-title {
+  margin-top: 20px;
+  font-size: 2rem;
+  color: #f5e0c3;
+  letter-spacing: 2px;
+}
+
+/* Rotation Keyframes */
+@keyframes rotateBook {
+  0% {
+    transform: rotateY(0deg) scale(1);
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    transform: rotateY(360deg) scale(1.1);
+    opacity: 1;
+  }
+}
+
+/* Fade out intro */
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+/* Hidden main content */
+.hidden {
+  display: none;
+}
+
+.main-content {
+  padding: 40px;
+  text-align: center;
+  background: linear-gradient(to bottom, #0f2027, #203a43, #2c5364);
+  min-height: 100vh;
+}
+
+.custom-cursor {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  background: rgba(0, 255, 255, 0.8);
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease;
+  z-index: 9999;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.6), 0 0 20px rgba(0, 255, 255, 0.4);
+}

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MyLibrary - Digital Library System</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="custom-cursor"></div>
+
+  <!-- Stars Background -->
+  <div class="animated-bg"></div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <div class="logo">📘 MyLibrary</div>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="register.html" class="btn-outline">Register</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero-section">
+    <div class="overlay"></div>
+    <div class="hero-content fade-in">
+      <h1>Explore, Borrow & Learn</h1>
+      <p>Your digital gateway to endless knowledge and resources</p>
+      <a href="#" class="btn-primary">Get Started 📚</a>
+    </div>
+  </header>
+
+  <!-- Features Section -->
+  <section class="features" id="features">
+  <h2 class="section-title slide-up">Features</h2>
+  <div class="feature-cards">
+    <a href="search.html" class="card slide-in-left">
+      <div class="icon">🔍</div>
+      <h3>Smart Search</h3>
+      <p>Search books by title, author, or keyword with advanced filters.</p>
+    </a>
+    <a href="borrow.html" class="card slide-in-bottom">
+      <div class="icon">📖</div>
+      <h3>Easy Borrow</h3>
+      <p>Borrow and track books online with reminders and history.</p>
+    </a>
+    <a href="admin.html" class="card slide-in-right">
+      <div class="icon">🛠️</div>
+      <h3>Admin Tools</h3>
+      <p>Admins can manage users, books, and lending records easily.</p>
+    </a>
+  </div>
+</section>
+
+
+  <!-- CTA Section -->
+  <section class="cta-section fade-in">
+    <h2>Ready to Dive into a World of Knowledge?</h2>
+    <a href="register.html" class="btn-primary">Join Now</a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    &copy; 2025 MyLibrary. Designed with ❤️ by YourName.
+  </footer>
+
+  <script>
+    // Simple Scroll Animation Trigger
+    const fadeIns = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .slide-up, .slide-in-bottom');
+
+    window.addEventListener('scroll', () => {
+      fadeIns.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 50) {
+          el.classList.add('visible');
+        }
+      });
+    });
+  </script>
+
+  <script>
+  const cursor = document.querySelector('.custom-cursor');
+  window.addEventListener('mousemove', e => {
+    cursor.style.top = e.clientY + 'px';
+    cursor.style.left = e.clientX + 'px';
+  });
+</script>
+
+</body>
+</html>

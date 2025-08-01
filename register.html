@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Register | MyLibrary</title>
+  <link rel="stylesheet" href="login.css" />
+</head>
+<body>
+    <div class="back-button">
+  <a href="index1.html">← Back to Home</a>
+</div>
+<div class="custom-cursor"></div>
+
+
+  <div class="background-animation"></div>
+
+  <div class="form-container">
+    <h2>Create Account 📖</h2>
+    <p>Join MyLibrary today</p>
+    <form>
+      <input type="text" placeholder="Full Name" required />
+      <input type="email" placeholder="Email" required />
+      <input type="password" placeholder="Password" required />
+      <button type="submit">Register</button>
+      <p class="switch">Already have an account? <a href="login.html">Login here</a></p>
+    </form>
+  </div>
+
+  <script>
+  const cursor = document.querySelector('.custom-cursor');
+  window.addEventListener('mousemove', e => {
+    cursor.style.top = e.clientY + 'px';
+    cursor.style.left = e.clientX + 'px';
+  });
+</script>
+
+</body>
+</html>

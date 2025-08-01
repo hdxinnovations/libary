@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Smart Search - MyLibrary</title>
+  <link rel="stylesheet" href="search.css" />
+</head>
+<body>
+  <div class="custom-cursor"></div>
+
+    <div class="back-button">
+  <a href="index1.html">← Back to Home</a>
+</div>
+  <!-- Header -->
+  <header class="search-header">
+    <h1>🔍 Smart Book Search</h1>
+    <p>Find your favorite books quickly and easily!</p>
+  </header>
+
+  <!-- Search Section -->
+  <section class="search-section">
+    <input type="text" id="searchInput" placeholder="Search by title, author, or keyword..." />
+    
+    <div class="filters">
+      <select id="category">
+        <option value="">All Categories</option>
+        <option value="fiction">Fiction</option>
+        <option value="nonfiction">Non-fiction</option>
+        <option value="science">Science</option>
+        <option value="history">History</option>
+      </select>
+
+      <select id="availability">
+        <option value="">All Status</option>
+        <option value="available">Available</option>
+        <option value="borrowed">Borrowed</option>
+      </select>
+
+      <button onclick="searchBooks()">Search</button>
+    </div>
+  </section>
+
+  <!-- Results Section -->
+  <section class="results-section" id="results">
+    <!-- Book cards will appear here dynamically -->
+  </section>
+
+  <footer class="footer">
+    &copy; 2025 MyLibrary. Designed with ❤️ by YourName
+  </footer>
+
+  <script>
+    const books = [
+  { title: "Atomic Habits", author: "James Clear", category: "nonfiction", available: true },
+  { title: "1984", author: "George Orwell", category: "fiction", available: false },
+  { title: "Brief History of Time", author: "Stephen Hawking", category: "science", available: true },
+  { title: "Sapiens", author: "Yuval Noah Harari", category: "history", available: true },
+  { title: "The Alchemist", author: "Paulo Coelho", category: "fiction", available: false },
+];
+
+function searchBooks() {
+  const input = document.getElementById("searchInput").value.toLowerCase();
+  const category = document.getElementById("category").value;
+  const availability = document.getElementById("availability").value;
+  const resultDiv = document.getElementById("results");
+
+  const filtered = books.filter(book => {
+    const matchKeyword = book.title.toLowerCase().includes(input) || book.author.toLowerCase().includes(input);
+    const matchCategory = category ? book.category === category : true;
+    const matchAvailability = availability
+      ? (availability === "available" && book.available) || (availability === "borrowed" && !book.available)
+      : true;
+    return matchKeyword && matchCategory && matchAvailability;
+  });
+
+  resultDiv.innerHTML = "";
+
+  if (filtered.length === 0) {
+    resultDiv.innerHTML = "<p>No books found. Try adjusting your filters.</p>";
+    return;
+  }
+
+  filtered.forEach(book => {
+    const card = document.createElement("div");
+    card.className = "book-card";
+    card.innerHTML = `
+      <h3>${book.title}</h3>
+      <p><strong>Author:</strong> ${book.author}</p>
+      <p><strong>Category:</strong> ${book.category}</p>
+      <p><strong>Status:</strong> ${book.available ? "✅ Available" : "❌ Borrowed"}</p>
+    `;
+    resultDiv.appendChild(card);
+  });
+}
+  </script>
+
+  <script>
+  const cursor = document.querySelector('.custom-cursor');
+  window.addEventListener('mousemove', e => {
+    cursor.style.top = e.clientY + 'px';
+    cursor.style.left = e.clientX + 'px';
+  });
+</script>
+
+</body>
+</html>

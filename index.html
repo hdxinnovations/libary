@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MyLibrary - Welcome</title>
+  <link rel="stylesheet" href="style1.css" />
+</head>
+<body>
+
+  <div class="custom-cursor"></div>
+
+  <!-- Intro Animation Container -->
+  <div class="intro-container">
+    <div class="book-wrapper">
+      <img src="book.png" alt="Book" class="rotating-book" />
+      <h1 class="book-title">MyLibrary</h1>
+    </div>
+  </div>
+
+  <script>
+    // Hide the intro after animation
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.querySelector('.intro-container').style.display = 'none';
+        document.querySelector('.main-content').classList.remove('hidden');
+      }, 4000); // Duration of animation
+    });
+
+    <!-- Redirect script after animation -->
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      window.location.href = "index1.html"; // change this to your homepage if needed
+    }, 4000); // Match the duration of the animation
+  });
+  </script>
+
+<script>
+  const cursor = document.querySelector('.custom-cursor');
+  window.addEventListener('mousemove', e => {
+    cursor.style.top = e.clientY + 'px';
+    cursor.style.left = e.clientX + 'px';
+  });
+</script>
+
+</body>
+</html>
